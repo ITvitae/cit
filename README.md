@@ -1,8 +1,8 @@
-# Checkin
+# cit: Check-in terminal
 
 > WARNING: Alpha software, started on this yesterday, we are NOT open for pull requests atm.
 
-Set up a check-in kiosk that works with QR-codes.
+Set up a check-in terminal that works with QR-codes.
 
 ## Setup and configuration
 
