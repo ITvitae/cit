@@ -1,0 +1,51 @@
+#! /bin/sh
+
+err () {
+	echo "$1"
+	cd $WD
+	exit 1
+}
+
+# Store current work dir
+WD="$(pwd)"
+
+# Get into ~/checkin
+cd ~/checkin
+
+# Err if it's impossible to cd to ~/checkin
+
+if [ $? -ne 0 ]; then
+	err "FATAL: checkin directory is in the wrong location"
+fi
+
+exit 0
+
+# Copy config files
+
+cp ./openbox.autostart ~/.config/autostart
+cp ./openbox.environment ~/.config/environment
+cp ./openbox.menu.xml ~/.config/menu.xml
+cp ./openbox.rc.xml ~/.config/rc.xml
+cp ./dunst.dunstrc ~/.config/dunst/dunstrc
+cp ./tint2.tint2rc ~/.config/tint2/tint2rc
+
+# See if env3 dir exists and set it up if required, installing Python depends using pip
+
+if ! test -d ./env3; then
+	python3 -m venv env3
+	if [ $? -ne 0 ]; then
+		err "FATAL: Failed to create a Python virtual environment"
+	fi
+	source ./env3/bin/activate
+	if [ $? -ne 0 ]; then
+		err "FATAL: failed to activate env3 virtual environment"
+	fi
+	pip install -r requirements.txt
+	if [ $? -ne 0 ]; then
+		err "FATAL: pip failed installing from requirements.txt"
+	fi
+fi
+
+# Return to original work dir
+cd $WD
+

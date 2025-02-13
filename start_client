@@ -1,0 +1,3 @@
+#! /bin/sh
+. ~/checkin/env3/bin/activate
+python ~/checkin/checkin.py
