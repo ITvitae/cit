@@ -16,12 +16,12 @@ def notify(title, message, _type='normal'):
             }[_type]
 
     run([
-        'notify-send', 
+        'notify-send',
         f'"{title}"',
         f'"{message}"',
         '-t',
         f'{display_time}',
-        '-u', 
+        '-u',
         _type
     ])
 
@@ -40,7 +40,7 @@ def main():
 
     while True:
         ret, frame = capture.read()
-    
+
 
         if ret:
             cv2.imshow(window_name, frame)
@@ -62,7 +62,7 @@ def main():
                         cv2.waitKey(1)
                         continue
                     r = post("http://localhost:5003/listen", data=json_dict)
-                        
+
                     notify("Hello and thank you!", data)
 
             cv2.waitKey(1)
