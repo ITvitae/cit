@@ -20,4 +20,5 @@ tint2 &
 nm-applet &
 xset s off &
 xset s noblank &
-sh ~/checkin/start &
+sh ~/cit/start_client &
+sh ~/cit/start_server &
