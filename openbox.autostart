@@ -15,6 +15,7 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+setxkbmap -option srvrkeys:none &
 dunst &
 tint2 &
 nm-applet &
