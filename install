@@ -27,14 +27,14 @@ cp ./openbox.rc.xml ~/.config/rc.xml
 cp ./dunst.dunstrc ~/.config/dunst/dunstrc
 cp ./tint2.tint2rc ~/.config/tint2/tint2rc
 
-# See if env3 dir exists and set it up if required, installing Python depends using pip
+# See if ~/.config/cit/env3 dir exists and set it up if required, installing Python depends using pip
 
-if ! test -d ./env3; then
-	python3 -m venv env3
+if ! test -d ~/.config/cit/env3; then
+	python3 -m venv ~/.config/cit/env3
 	if [ $? -ne 0 ]; then
 		err "FATAL: Failed to create a Python virtual environment"
 	fi
-	source ./env3/bin/activate
+	source ~/.config/cit/env3/bin/activate
 	if [ $? -ne 0 ]; then
 		err "FATAL: failed to activate env3 virtual environment"
 	fi
