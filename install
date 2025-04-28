@@ -9,13 +9,13 @@ err () {
 # Store current work dir
 WD="$(pwd)"
 
-# Get into ~/cit
-cd ~/cit
+# Get into /cit
+cd /cit
 
-# Err if it's impossible to cd to ~/cit
+# Err if it's impossible to cd to /cit
 
 if [ $? -ne 0 ]; then
-	err "FATAL: cit directory is in the wrong location: expected at ~/cit"
+	err "FATAL: cit directory is in the wrong location: expected at /cit"
 fi
 
 exit 0
