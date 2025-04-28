@@ -9,13 +9,13 @@ err () {
 # Store current work dir
 WD="$(pwd)"
 
-# Get into ~/checkin
-cd ~/checkin
+# Get into ~/cit
+cd ~/cit
 
-# Err if it's impossible to cd to ~/checkin
+# Err if it's impossible to cd to ~/cit
 
 if [ $? -ne 0 ]; then
-	err "FATAL: checkin directory is in the wrong location"
+	err "FATAL: cit directory is in the wrong location: expected at ~/cit"
 fi
 
 exit 0
