@@ -18,12 +18,14 @@ if [ $? -ne 0 ]; then
 	err "FATAL: cit directory is in the wrong location: expected at /cit"
 fi
 
+# Create config directories
+mkdir ~/.config
+mkdir ~/.config/openbox ~/.config/dunst ~/.config/tint2 ~/.config/cit
 # Copy config files
-
-cp ./openbox.autostart ~/.config/autostart
-cp ./openbox.environment ~/.config/environment
-cp ./openbox.menu.xml ~/.config/menu.xml
-cp ./openbox.rc.xml ~/.config/rc.xml
+cp ./openbox.autostart ~/.config/openbox/autostart
+cp ./openbox.environment ~/.config/openbox/environment
+cp ./openbox.menu.xml ~/.config/openbox/menu.xml
+cp ./openbox.rc.xml ~/.config/openbox/rc.xml
 cp ./dunst.dunstrc ~/.config/dunst/dunstrc
 cp ./tint2.tint2rc ~/.config/tint2/tint2rc
 
