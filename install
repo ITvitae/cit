@@ -10,6 +10,7 @@ err () {
 WD="$(pwd)"
 
 # Get into /cit
+echo "Changing directories to /cit"
 cd /cit
 
 # Err if it's impossible to cd to /cit
@@ -19,9 +20,11 @@ if [ $? -ne 0 ]; then
 fi
 
 # Create config directories
+echo "Setting up ~/.config and it's sub directories"
 mkdir ~/.config
 mkdir ~/.config/openbox ~/.config/dunst ~/.config/tint2 ~/.config/cit
 # Copy config files
+echo "Copying configuration files to ~/.config"
 cp ./openbox.autostart ~/.config/openbox/autostart
 cp ./openbox.environment ~/.config/openbox/environment
 cp ./openbox.menu.xml ~/.config/openbox/menu.xml
@@ -30,7 +33,7 @@ cp ./dunst.dunstrc ~/.config/dunst/dunstrc
 cp ./tint2.tint2rc ~/.config/tint2/tint2rc
 
 # See if ~/.config/cit/env3 dir exists and set it up if required, installing Python depends using pip
-
+echo "Looking for and/or setting up a python3 virtual environment under ~/.config/cit/env3"
 if ! test -d ~/.config/cit/env3; then
 	python3 -m venv ~/.config/cit/env3
 	if [ $? -ne 0 ]; then
