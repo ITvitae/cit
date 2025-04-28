@@ -39,7 +39,7 @@ if ! test -d ~/.config/cit/env3; then
 	if [ $? -ne 0 ]; then
 		err "FATAL: Failed to create a Python virtual environment"
 	fi
-	source ~/.config/cit/env3/bin/activate
+	. ~/.config/cit/env3/bin/activate
 	if [ $? -ne 0 ]; then
 		err "FATAL: failed to activate env3 virtual environment"
 	fi
