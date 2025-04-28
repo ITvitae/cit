@@ -162,10 +162,6 @@ launcher_icon_theme_override = 0
 startup_notifications = 1
 launcher_tooltip = 1
 launcher_item_app = tint2conf.desktop
-launcher_item_app = firefox.desktop
-launcher_item_app = iceweasel.desktop
-launcher_item_app = chromium-browser.desktop
-launcher_item_app = google-chrome.desktop
 
 #-------------------------------------
 # Clock
@@ -222,6 +218,22 @@ separator_color = #777777 88
 separator_style = empty
 separator_size = 3
 separator_padding = 1 0
+
+#-------------------------------------
+# Button 1
+button = new
+button_text = admin
+button_lclick_command = bash /cit/admin_panel.sh
+button_rclick_command = 
+button_mclick_command = 
+button_uwheel_command = 
+button_dwheel_command =
+button_font = Sans 10
+button_font_color = #ffffff 100
+button_padding = 24 0
+button_background_id =
+button_centered = 0
+button_max_icon_size = 0
 
 #-------------------------------------
 # Tooltip
