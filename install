@@ -18,8 +18,6 @@ if [ $? -ne 0 ]; then
 	err "FATAL: cit directory is in the wrong location: expected at /cit"
 fi
 
-exit 0
-
 # Copy config files
 
 cp ./openbox.autostart ~/.config/autostart
