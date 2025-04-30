@@ -1,5 +1,6 @@
 pmount /dev/sda1
 
-cp ~/cit_*.csv /media/sda1/
+curl localhost:5300 > /media/sda1/index.html
 
 pumount /dev/sda1
+
