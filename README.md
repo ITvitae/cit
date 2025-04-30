@@ -31,6 +31,14 @@ Copy `tint2.tint2rc` to `~/.config/tint2/tint2rc`
 
 Install `nm-applet-gnome`.
 
+### pmount
+
+Install `pmount`.
+
+### yad
+
+Install `yad`.
+
 ### Python, pip, venv
 
 Get a working version of Python, including pip and venv.
