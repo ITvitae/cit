@@ -12,7 +12,7 @@ from requests import post
 def dir_check(cit_dir):
     if cit_dir[0] == "~":
         home = expanduser('~')
-        cit_dir = f'{home}{cit_dir[1]}'
+        cit_dir = f'{home}{cit_dir[1:]}'
     if not exists(cit_dir):
         # TODO: Make this part less crude
         mkdir(cit_dir)
