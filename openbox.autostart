@@ -23,3 +23,4 @@ xset s off &
 xset s noblank &
 sh /cit/start_client &
 sh /cit/start_server &
+feh --bg-scale $HOME/cit_wallpaper.png &

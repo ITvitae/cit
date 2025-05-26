@@ -39,6 +39,10 @@ Install `pmount`.
 
 Install `yad`.
 
+### feh
+
+Install `feh`.
+
 ### Python, pip, venv
 
 Get a working version of Python, including pip and venv.
