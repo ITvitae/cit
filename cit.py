@@ -72,12 +72,19 @@ def check_in(user, timestamp, cit_dir):
     with open(f'{cit_dir}{date}.csv', 'r') as _f:
         lines = _f.readlines()
     new_csv = []
+    if user.endswith('\n'):
+        user = user.rstrip('\n')
+    found_user = False
     for line in lines:
         parts = line.split(';')
         if user in parts[0]:
             if parts[2] == 'missing':
                 line = f'{parts[0]};{parts[1]};{timestamp}'
+                found_user = True
         new_csv.append(line)
+    if not found_user:
+                line = f'{user};UNKNOWN;{timestamp}'
+                new_csv.append(line)
 
     with open(f'{cit_dir}{date}.csv', 'w') as _f:
         _f.writelines(new_csv)
