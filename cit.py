@@ -65,7 +65,7 @@ def init_csv(cit_dir):
         _f.writelines(new_csv)
 
 
-def check_in(user, timestamp, cit_cir):
+def check_in(user, timestamp, cit_dir):
     date =  datetime.now().strftime('%Y_%m_%d')
     if not isfile(f'{cit_dir}{date}'):
         init_csv(cit_dir, date)
