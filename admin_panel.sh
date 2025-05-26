@@ -16,6 +16,6 @@ if [[ "$password" == "$(< ~/password.txt)" ]]; then
         xfce4-terminal
     fi
     if [[ "$result" == "4" ]]; then
-        xfce4-terminal -e "less $HOME/cit/$(date +"%Y_%m_%d").scv"
+        xfce4-terminal -e "less $HOME/cit/$(date +"%Y_%m_%d").csv"
     fi
 fi
