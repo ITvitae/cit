@@ -105,6 +105,12 @@
   <moveButton>Middle</moveButton>
 </dock>
 
+<keyboard>
+  <keybind key="F8">
+    <action name="Execute"/><command>bash /cit/admin_panel.sh</command></action>
+  </keybind>
+</keyboard>
+
 <mouse>
   <dragThreshold>1</dragThreshold>
   <doubleClickTime>500</doubleClickTime>
