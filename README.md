@@ -43,6 +43,8 @@ Install `yad`.
 
 Install `feh`.
 
+Place a wallpaper at `~/cit_wallpaper.png`.
+
 ### Python, pip, venv
 
 Get a working version of Python, including pip and venv.
