@@ -58,8 +58,9 @@ def init_csv(cit_dir, date):
             if not line:
                 continue
             group = line
+            continue
         else:
-            new_csv.append(f'{group};{line};missing')
+            new_csv.append(f'{line};{group};missing')
 
     with open(f'{cit_dir}{date}.csv', 'w') as _f:
         _f.writelines(new_csv)
