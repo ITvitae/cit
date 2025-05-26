@@ -43,7 +43,7 @@ def notify(title, message, _type='normal'):
     ])
 
 
-def init_csv(cit_dir):
+def init_csv(cit_dir, date):
     with open('users.txt', 'r') as _f:
         lines = _f.readlines()
     new_csv = ["person;group;timestamp"]
