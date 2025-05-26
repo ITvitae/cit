@@ -107,7 +107,7 @@
 
 <keyboard>
   <keybind key="F8">
-    <action name="Execute"/><command>bash /cit/admin_panel.sh</command></action>
+    <action name="Execute"><command>bash /cit/admin_panel.sh</command></action>
   </keybind>
 </keyboard>
 
