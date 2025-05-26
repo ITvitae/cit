@@ -1,3 +1,0 @@
-#! /bin/sh
-. ~/.config/cit/env3/bin/activate
-python /cit/server.py
