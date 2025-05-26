@@ -107,7 +107,11 @@
 
 <keyboard>
   <keybind key="F8">
-    <action name="Execute"><command>bash /cit/admin_panel.sh</command></action>
+    <action name="Execute">
+    <command>
+      bash /cit/admin_panel.sh
+    </command>
+    </action>
   </keybind>
 </keyboard>
 
@@ -122,7 +126,6 @@
       <action name="Move"/>
     </mousebind>
   </context>
-
 
   <context name="Top">
     <mousebind button="Left" action="Drag">
