@@ -2,9 +2,26 @@
 from datetime import datetime
 from json import dumps
 from subprocess import run
+from os import mkdir
+from os.path import exists, isdir, isfile, expanduser
 
 import cv2
 from requests import post
+
+
+def dir_check(cit_dir):
+    if cit_dir[0]("~"):
+        home = expanduser('~')
+        cit_dir = f'{home}{cit_dir[1]}'
+    if not exists(cit_dir):
+        # TODO: Make this part less crude
+        mkdir(cit_dir)
+    if not isdir(cit_dir):
+        # TODO: Make this part less crude
+        raise Exception(f' Expected a directory at cit dir: "{cit_dir}" but found something else!')
+    if not cit_dir.endswith("/"):
+        cit_dir = f'{cit_dir}/'
+    return cit_dir
 
 
 def notify(title, message, _type='normal'):
@@ -25,7 +42,59 @@ def notify(title, message, _type='normal'):
         _type
     ])
 
-def main():
+
+def init_csv(cit_dir):
+    with open('users.txt', 'r') as _f:
+        lines = _f.readlines()
+    new_csv = ["person;group;timestamp"]
+    group = "NONE"
+    for line in lines:
+        if line.startswith('#'):
+            continue
+        if not line:
+            continue
+        if line.startswith('@'):
+            line = line[1:]
+            if not line:
+                continue
+            group = line
+        else:
+            new_csv.append(f'{group};{line};missing')
+
+    with open(f'{cit_dir}{date}.csv', 'w') as _f:
+        _f.writelines(new_csv)
+
+
+def check_in(data, cit_cir):
+    if 'user' not in data:
+        return "Missing required key 'user'"
+
+    if 'timestamp' not in data:
+        return "Missing required key 'timestamp'"
+    user = data['user']
+    timestamp = data['timestamp']
+    date =  datetime.now().strftime('%Y_%m_%d')
+    if not isfile(f'{cit_dir}{date}'):
+        init_csv(cit_dir, date)
+    with open(f'{cit_dir}{date}.csv', 'r') as _f:
+        lines = _f.readlines()
+    new_csv = []
+    for line in lines:
+        parts = line.split(';')
+        if user in parts[0]:
+            if parts[2] == 'missing':
+                line = f'{parts[0]};{parts[1]};{timestamp}'
+        new_csv.append(line)
+
+    with open(f'{cit_dir}{date}.csv', 'w') as _f:
+        _f.writelines(new_csv)
+
+    return "Thank you!"
+
+
+def main(cit_dir="~/cit/"):
+
+    cit_dir = dir_check(cit_dir)
 
     window_name = 'webcam-stream'
 
@@ -61,9 +130,9 @@ def main():
                         notify("Fatal error", "Unusable data in QR code!", "critical")
                         cv2.waitKey(1)
                         continue
-                    r = post("http://localhost:5003/listen", data=json_dict)
+                    response = check_in(json_dict, cit_dir)
 
-                    notify("Hello and thank you!", data)
+                    notify(response, data)
 
             cv2.waitKey(1)
 
