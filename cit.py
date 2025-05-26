@@ -53,6 +53,7 @@ def init_csv(cit_dir, date):
             continue
         if not line:
             continue
+        line = line.rstrip('\n')
         if line.startswith('@'):
             line = line[1:]
             if not line:
