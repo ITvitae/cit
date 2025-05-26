@@ -65,14 +65,7 @@ def init_csv(cit_dir):
         _f.writelines(new_csv)
 
 
-def check_in(data, cit_cir):
-    if 'user' not in data:
-        return "Missing required key 'user'"
-
-    if 'timestamp' not in data:
-        return "Missing required key 'timestamp'"
-    user = data['user']
-    timestamp = data['timestamp']
+def check_in(user, timestamp, cit_cir):
     date =  datetime.now().strftime('%Y_%m_%d')
     if not isfile(f'{cit_dir}{date}'):
         init_csv(cit_dir, date)
@@ -119,18 +112,7 @@ def main(cit_dir="~/cit/"):
                 if data != last_checkin:
                     last_checkin = data
                     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M')
-                    try:
-                        json_dict = dumps (
-                        {
-                            "user": data,
-                            "timestamp": timestamp
-                            }
-                                )
-                    except TypeError:
-                        notify("Fatal error", "Unusable data in QR code!", "critical")
-                        cv2.waitKey(1)
-                        continue
-                    response = check_in(json_dict, cit_dir)
+                    response = check_in(data, timestamp, cit_dir)
 
                     notify(response, data)
 
