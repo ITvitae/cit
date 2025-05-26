@@ -46,7 +46,7 @@ def notify(title, message, _type='normal'):
 def init_csv(cit_dir, date):
     with open('users.txt', 'r') as _f:
         lines = _f.readlines()
-    new_csv = ["person;group;timestamp"]
+    new_csv = ["person;group;timestamp\n"]
     group = "NONE"
     for line in lines:
         if line.startswith('#'):
@@ -60,7 +60,7 @@ def init_csv(cit_dir, date):
             group = line
             continue
         else:
-            new_csv.append(f'{line};{group};missing')
+            new_csv.append(f'{line};{group};missing\n')
 
     with open(f'{cit_dir}{date}.csv', 'w') as _f:
         _f.writelines(new_csv)
@@ -80,11 +80,11 @@ def check_in(user, timestamp, cit_dir):
         parts = line.split(';')
         if user in parts[0]:
             if parts[2] == 'missing':
-                line = f'{parts[0]};{parts[1]};{timestamp}'
+                line = f'{parts[0]};{parts[1]};{timestamp}\n'
                 found_user = True
         new_csv.append(line)
     if not found_user:
-                line = f'{user};UNKNOWN;{timestamp}'
+                line = f'{user};UNKNOWN;{timestamp}\n'
                 new_csv.append(line)
 
     with open(f'{cit_dir}{date}.csv', 'w') as _f:
